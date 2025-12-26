@@ -7,8 +7,6 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.0
       - key: NEON_API_URL
         sync: false
       - key: NEON_API_KEY

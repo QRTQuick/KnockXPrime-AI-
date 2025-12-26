@@ -1,5 +1,5 @@
 import secrets
-import bcrypt
+from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from typing import Optional
 from fastapi import HTTPException, status, Depends
@@ -12,16 +12,18 @@ from app.core.database import db
 
 security = HTTPBearer()
 
+# Password hashing context
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 
 def hash_password(password: str) -> str:
     """Hash a password using bcrypt"""
-    salt = bcrypt.gensalt()
-    return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+    return pwd_context.hash(password)
 
 
 def verify_password(password: str, hashed_password: str) -> bool:
     """Verify a password against its hash"""
-    return bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8'))
+    return pwd_context.verify(password, hashed_password)
 
 
 def generate_api_key() -> str:
