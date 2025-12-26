@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: knockxprime-ai-backend
+    env: python
+    plan: free
+    rootDir: knockxprime_ai
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: NEON_API_URL
+        sync: false
+      - key: NEON_API_KEY
+        sync: false
+      - key: GROK_API_KEY
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ENVIRONMENT
+        value: production
+    healthCheckPath: /health/
+    autoDeploy: true
+    branch: main
+    
+    # Scaling configuration
+    numInstances: 1
+    
+    # Custom headers for API
+    headers:
+      - path: "/api/*"
+        name: "Access-Control-Allow-Origin"
+        value: "*"
+      - path: "/api/*"
+        name: "Access-Control-Allow-Methods"
+        value: "GET, POST, PUT, DELETE, OPTIONS"
+      - path: "/api/*"
+        name: "Access-Control-Allow-Headers"
+        value: "Content-Type, Authorization"

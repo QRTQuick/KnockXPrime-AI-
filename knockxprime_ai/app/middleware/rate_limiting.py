@@ -1,86 +1,78 @@
 """
-Rate limiting middleware for API endpoints
+Rate limiting middleware
 """
-import time
-from typing import Dict, Optional
 from fastapi import Request, HTTPException, status
 from starlette.middleware.base import BaseHTTPMiddleware
+import time
 from collections import defaultdict, deque
-
-
-class RateLimiter:
-    def __init__(self):
-        # Store request timestamps per IP/API key
-        self.requests: Dict[str, deque] = defaultdict(lambda: deque())
-        
-    def is_allowed(self, key: str, limit: int, window: int) -> bool:
-        """Check if request is allowed within rate limit"""
-        now = time.time()
-        requests = self.requests[key]
-        
-        # Remove old requests outside the window
-        while requests and requests[0] <= now - window:
-            requests.popleft()
-        
-        # Check if under limit
-        if len(requests) < limit:
-            requests.append(now)
-            return True
-        
-        return False
-    
-    def get_reset_time(self, key: str, window: int) -> Optional[int]:
-        """Get when the rate limit resets"""
-        requests = self.requests[key]
-        if requests:
-            return int(requests[0] + window)
-        return None
-
-
-# Global rate limiter instance
-rate_limiter = RateLimiter()
+from typing import Dict, Deque
 
 
 class RateLimitMiddleware(BaseHTTPMiddleware):
-    def __init__(self, app, calls_per_minute: int = 60):
+    """Rate limiting middleware using sliding window"""
+    
+    def __init__(self, app, calls_per_minute: int = 100):
         super().__init__(app)
         self.calls_per_minute = calls_per_minute
-        self.window = 60  # 1 minute window
+        self.window_size = 60  # 60 seconds
+        self.clients: Dict[str, Deque[float]] = defaultdict(deque)
+    
+    def get_client_id(self, request: Request) -> str:
+        """Get client identifier from request"""
+        # Try to get real IP from headers
+        forwarded_for = request.headers.get("x-forwarded-for")
+        if forwarded_for:
+            return forwarded_for.split(",")[0].strip()
+        
+        real_ip = request.headers.get("x-real-ip")
+        if real_ip:
+            return real_ip
+        
+        # Fallback to client host
+        return request.client.host if request.client else "unknown"
+    
+    def is_rate_limited(self, client_id: str) -> bool:
+        """Check if client is rate limited"""
+        now = time.time()
+        client_requests = self.clients[client_id]
+        
+        # Remove old requests outside the window
+        while client_requests and client_requests[0] <= now - self.window_size:
+            client_requests.popleft()
+        
+        # Check if limit exceeded
+        if len(client_requests) >= self.calls_per_minute:
+            return True
+        
+        # Add current request
+        client_requests.append(now)
+        return False
     
     async def dispatch(self, request: Request, call_next):
         # Skip rate limiting for health checks
         if request.url.path.startswith("/health"):
             return await call_next(request)
         
-        # Get client identifier (IP or API key)
         client_id = self.get_client_id(request)
         
-        # Check rate limit
-        if not rate_limiter.is_allowed(client_id, self.calls_per_minute, self.window):
-            reset_time = rate_limiter.get_reset_time(client_id, self.window)
+        if self.is_rate_limited(client_id):
             raise HTTPException(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
                 detail={
                     "error": "Rate limit exceeded",
-                    "message": f"Too many requests. Limit: {self.calls_per_minute} per minute",
-                    "reset_time": reset_time
-                },
-                headers={"Retry-After": str(self.window)}
+                    "message": f"Maximum {self.calls_per_minute} requests per minute allowed",
+                    "retry_after": 60
+                }
             )
         
-        return await call_next(request)
-    
-    def get_client_id(self, request: Request) -> str:
-        """Get client identifier for rate limiting"""
-        # Try to get API key from Authorization header
-        auth_header = request.headers.get("authorization", "")
-        if auth_header.startswith("Bearer "):
-            return f"api_key:{auth_header[7:20]}"  # Use first 20 chars of API key
+        response = await call_next(request)
         
-        # Fall back to IP address
-        client_ip = request.client.host if request.client else "unknown"
-        forwarded_for = request.headers.get("x-forwarded-for")
-        if forwarded_for:
-            client_ip = forwarded_for.split(",")[0].strip()
+        # Add rate limit headers
+        client_requests = self.clients[client_id]
+        remaining = max(0, self.calls_per_minute - len(client_requests))
         
-        return f"ip:{client_ip}"
+        response.headers["X-RateLimit-Limit"] = str(self.calls_per_minute)
+        response.headers["X-RateLimit-Remaining"] = str(remaining)
+        response.headers["X-RateLimit-Reset"] = str(int(time.time() + self.window_size))
+        
+        return response

@@ -23,6 +23,23 @@ class Settings(BaseSettings):
     # Environment
     environment: str = os.getenv("ENVIRONMENT", "development")
     
+    # Server Configuration
+    host: str = os.getenv("HOST", "0.0.0.0")
+    port: int = int(os.getenv("PORT", 8000))
+    
+    # CORS Settings
+    cors_origins: list = [
+        "http://localhost:3000",
+        "http://localhost:8000",
+        "https://knockxprime-ai-frontend.onrender.com",
+        "https://knockxprime.ai",
+        "https://www.knockxprime.ai"
+    ]
+    
+    # Rate Limiting
+    rate_limit_requests: int = int(os.getenv("RATE_LIMIT_REQUESTS", 100))
+    rate_limit_window: int = int(os.getenv("RATE_LIMIT_WINDOW", 60))
+    
     class Config:
         env_file = ".env"
 

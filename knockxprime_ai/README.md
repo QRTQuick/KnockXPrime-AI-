@@ -1,17 +1,86 @@
-# KnockXPrime AI - Neon Database Integration
+# KnockXPrime AI - Backend API
 
 A FastAPI-based AI chat service with subscription management, user authentication, and usage tracking using Neon Database.
 
-## Features
+## 🚀 Render Deployment Configuration
 
-- 🔐 **User Authentication**: JWT tokens and API key authentication
-- 💳 **Subscription Plans**: Tiered pricing with usage limits
-- 📊 **Usage Tracking**: Real-time token and request monitoring
-- 🤖 **Grok AI Integration**: Chat completions with billing enforcement
-- 🗄️ **Neon Database**: PostgreSQL database for user data and analytics
-- 🚀 **Render Deployment**: Keep-alive endpoints for cloud hosting
+### Root Directory
+```
+knockxprime_ai/
+```
 
-## Subscription Plans
+### Build Command
+```bash
+pip install -r requirements.txt
+```
+
+### Start Command
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+## 📁 Project Structure
+
+```
+knockxprime_ai/
+├── app/
+│   ├── main.py                 # FastAPI application entry point
+│   ├── core/
+│   │   ├── config.py          # Configuration and settings
+│   │   ├── database.py        # Neon DB connection and table creation
+│   │   ├── auth.py            # Authentication and JWT handling
+│   │   ├── plans.py           # Subscription plan logic
+│   │   ├── daily_usage.py     # Daily usage tracking
+│   │   ├── neon_utils.py      # Neon API utilities
+│   │   └── keep_alive.py      # Health check endpoints
+│   ├── api/v1/
+│   │   ├── users.py           # User registration, login, profile
+│   │   ├── chat.py            # Chat completions with billing
+│   │   ├── usage.py           # Usage analytics and history
+│   │   ├── plans.py           # Plan management
+│   │   └── admin.py           # Admin endpoints
+│   ├── services/
+│   │   ├── grok_service.py    # Grok API integration
+│   │   ├── usage_service.py   # Usage tracking and limits
+│   │   └── billing_guard.py   # Subscription enforcement
+│   ├── middleware/
+│   │   ├── rate_limiting.py   # Rate limiting middleware
+│   │   ├── logging.py         # Request logging
+│   │   ├── security.py        # Security headers
+│   │   └── cors.py            # CORS configuration
+│   └── schemas/
+│       ├── user_schema.py     # User data models
+│       ├── chat_schema.py     # Chat request/response models
+│       └── usage_schema.py    # Usage statistics models
+├── requirements.txt           # Python dependencies
+├── runtime.txt               # Python version
+├── Procfile                  # Process configuration
+├── gunicorn.conf.py          # Gunicorn configuration
+├── render.yaml               # Render service configuration
+├── setup_database.py         # Database initialization script
+└── README.md                 # This file
+```
+
+## 🔧 Environment Variables
+
+### Required Variables
+```bash
+NEON_API_URL=https://ep-ancient-mountain-afykb78o.apirest.c-2.us-west-2.aws.neon.tech/neondb/rest/v1
+NEON_API_KEY=your_neon_api_key_here
+GROK_API_KEY=your_grok_api_key_here
+SECRET_KEY=your-super-secret-jwt-key-change-in-production
+```
+
+### Optional Variables
+```bash
+ENVIRONMENT=production
+PORT=8000
+HOST=0.0.0.0
+RATE_LIMIT_REQUESTS=100
+RATE_LIMIT_WINDOW=60
+```
+
+## 💳 Subscription Plans
 
 | Plan Name | Price | Max Tokens/Day | Max Requests/Day | Notes             |
 | --------- | ----- | -------------- | ---------------- | ----------------- |
@@ -20,71 +89,50 @@ A FastAPI-based AI chat service with subscription management, user authenticatio
 | Log Min   | $10   | 20,000         | 500/day          | Paid              |
 | High Max  | $100  | 100,000        | 2,000/day        | Paid              |
 
-## Quick Start
+## 🛠️ Local Development
 
-### 1. Environment Setup
-
+### Setup
 ```bash
-# Clone and navigate to project
+# Clone repository
 cd knockxprime_ai
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Copy environment file
+# Set up environment variables
 cp .env.example .env
-```
+# Edit .env with your actual values
 
-### 2. Configure Environment Variables
-
-Edit `.env` file with your Neon REST API credentials:
-
-```env
-# Neon Database REST API Configuration
-NEON_API_URL=https://ep-ancient-mountain-afykb78o.apirest.c-2.us-west-2.aws.neon.tech/neondb/rest/v1
-NEON_API_KEY=your_neon_api_key_here
-
-# Grok API Configuration
-GROK_API_KEY=your_grok_api_key_here
-
-# JWT Configuration
-SECRET_KEY=your-super-secret-jwt-key-change-in-production
-
-# Environment
-ENVIRONMENT=production
-```
-
-### 3. Initialize Database
-
-```bash
-# Run database setup script
+# Initialize database
 python setup_database.py
-```
 
-### 4. Run the Application
-
-```bash
-# Development
+# Run development server
 uvicorn app.main:app --reload
-
-# Production
-uvicorn app.main:app --host 0.0.0.0 --port 8000
-
-# Using Docker
-docker-compose up -d
 ```
 
-### 5. Test the API
-
+### Testing
 ```bash
-# Run the test script
-python test_api.py
+# Run the API test script
+python ../test_api.py
 
-# Or visit the interactive docs
-# http://localhost:8000/docs
+# Or test individual endpoints
+curl http://localhost:8000/health/
+curl http://localhost:8000/api/v1/plans/
 ```
 
-## API Endpoints
+## 🌐 API Endpoints
+
+### Health & Info
+- `GET /` - API information
+- `GET /api` - Detailed API info
+- `GET /health/` - Health check
+- `GET /health/ping` - Simple ping
+- `GET /health/database` - Database connection test
+- `GET /health/keep-alive` - Manual keep-alive trigger
 
 ### Authentication
 - `POST /api/v1/users/register` - Register new user
@@ -92,18 +140,20 @@ python test_api.py
 - `GET /api/v1/users/profile` - Get user profile
 - `POST /api/v1/users/regenerate-api-key` - Regenerate API key
 
-### Chat
+### Chat & AI
 - `POST /api/v1/chat/completions` - Chat completions with billing
 - `GET /api/v1/chat/usage` - Current usage info
 
-### Plans
+### Plans & Billing
 - `GET /api/v1/plans/` - List all subscription plans
 - `GET /api/v1/plans/{plan_id}` - Get specific plan
 - `POST /api/v1/plans/upgrade` - Upgrade subscription plan
 - `GET /api/v1/plans/compare/pricing` - Compare plans
 
 ### Usage Analytics
-- `GET /api/v1/usage/current` - Current month usage
+- `GET /api/v1/usage/current` - Current day usage
+- `GET /api/v1/usage/daily` - Today's usage statistics
+- `GET /api/v1/usage/monthly` - Current month usage
 - `GET /api/v1/usage/history` - Usage history
 - `GET /api/v1/usage/stats` - Detailed analytics
 
@@ -112,126 +162,159 @@ python test_api.py
 - `GET /api/v1/admin/users` - List all users
 - `GET /api/v1/admin/usage/top-users` - Top users by usage
 - `POST /api/v1/admin/users/{user_id}/reset-usage` - Reset user usage
+- `GET /api/v1/admin/system/health` - System health info
 
-### Health
-- `GET /health/` - Health check
-- `GET /health/ping` - Simple ping
-- `GET /health/database` - Neon database connection test
+## 🔒 Security Features
 
-## Usage Example
+### Middleware
+- **Security Headers**: X-Content-Type-Options, X-Frame-Options, CSP
+- **Rate Limiting**: Configurable requests per minute
+- **CORS**: Production-ready CORS configuration
+- **Request Logging**: Comprehensive request/response logging
 
-### 1. Register User
+### Authentication
+- **JWT Tokens**: Secure token-based authentication
+- **API Keys**: Unique API keys for each user
+- **Password Hashing**: bcrypt for secure password storage
+- **Input Validation**: Pydantic models for request validation
 
+### Database Security
+- **Parameterized Queries**: SQL injection protection
+- **Connection Encryption**: Secure connections to Neon DB
+- **Error Handling**: Secure error responses
+
+## 📊 Performance Features
+
+### Optimization
+- **Async/Await**: Non-blocking I/O operations
+- **Connection Pooling**: Efficient database connections
+- **Caching**: Response caching where appropriate
+- **Compression**: Gzip compression for responses
+
+### Monitoring
+- **Health Checks**: Multiple health check endpoints
+- **Request Tracking**: Request ID tracking
+- **Performance Metrics**: Response time headers
+- **Error Tracking**: Comprehensive error logging
+
+### Scaling
+- **Gunicorn**: Production WSGI server
+- **Worker Processes**: Multi-process deployment
+- **Keep-Alive**: Automatic service keep-alive
+- **Load Balancing**: Ready for horizontal scaling
+
+## 🚀 Deployment on Render
+
+### Automatic Deployment
+1. **Connect Repository**: Link your GitHub repository
+2. **Service Configuration**:
+   - Service Type: Web Service
+   - Environment: Python
+   - Root Directory: `knockxprime_ai`
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+
+3. **Environment Variables**: Set in Render dashboard
+   - `NEON_API_URL`
+   - `NEON_API_KEY`
+   - `GROK_API_KEY`
+   - `SECRET_KEY` (auto-generated)
+
+### Manual Deployment
 ```bash
-curl -X POST "http://localhost:8000/api/v1/users/register" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "username": "testuser",
-    "email": "test@example.com",
-    "password": "securepassword",
-    "plan_name": "Leveler"
-  }'
+# Ensure all changes are committed
+git add .
+git commit -m "Deploy backend to production"
+git push origin main
+
+# Render will automatically deploy
 ```
 
-### 2. Chat Request
+### Health Monitoring
+- Health check endpoint: `/health/`
+- Database connectivity: `/health/database`
+- Keep-alive mechanism: `/health/keep-alive`
 
-```bash
-curl -X POST "http://localhost:8000/api/v1/chat/completions" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "messages": [
-      {"role": "user", "content": "Hello, how are you?"}
-    ],
-    "max_tokens": 100
-  }'
-```
+## 🔧 Configuration Files
 
-## Database Integration
+### render.yaml
+Complete Render service configuration with:
+- Python environment setup
+- Environment variables
+- Health check configuration
+- CORS headers
+- Auto-deploy settings
 
-### Neon PostgreSQL 15 REST API
-- Uses Neon's REST API endpoint instead of direct PostgreSQL connection
-- Automatic retry logic for transient failures
-- Proper error handling and logging
-- Connection health monitoring
+### gunicorn.conf.py
+Production server configuration:
+- Worker process management
+- Logging configuration
+- Performance optimization
+- SSL support (if needed)
 
-### API Endpoint
-```
-https://ep-ancient-mountain-afykb78o.apirest.c-2.us-west-2.aws.neon.tech/neondb/rest/v1
-```
+### Procfile
+Process definitions for different deployment platforms
 
-### Database Schema
+## 📈 Monitoring & Logging
 
-### Tables
-- **users**: User accounts and authentication
-- **plans**: Subscription plans and pricing
-- **usage**: Monthly usage tracking
-- **sessions**: Optional session storage
+### Request Logging
+- Request/response logging
+- Performance timing
+- Client IP tracking
+- Error tracking
 
-## Production Features
+### Health Monitoring
+- Database connection status
+- API response times
+- Error rates
+- Keep-alive status
 
-### Security & Performance
-- Rate limiting (100 requests/minute per IP/API key)
-- Request/response logging middleware
-- JWT token authentication with API keys
-- Password hashing with bcrypt
-- SQL injection protection
-- CORS configuration
+### Security Monitoring
+- Rate limit violations
+- Authentication failures
+- Suspicious activity patterns
 
-### Admin Dashboard
-- User management and statistics
-- Usage analytics and top users
-- Revenue estimation
-- System health monitoring
-- User usage reset capabilities
+## 🛡️ Production Checklist
 
-### Monitoring & Deployment
-- Docker containerization
-- Health check endpoints
-- Automatic database initialization
-- Keep-alive for Render deployment
-- Comprehensive error handling
+- [ ] Environment variables configured
+- [ ] Database connection tested
+- [ ] API keys secured
+- [ ] Rate limiting configured
+- [ ] CORS origins set correctly
+- [ ] Health checks responding
+- [ ] SSL/HTTPS enabled
+- [ ] Error handling tested
+- [ ] Performance optimized
+- [ ] Security headers enabled
+- [ ] Logging configured
+- [ ] Monitoring set up
 
-## Testing
+## 📞 Support & Troubleshooting
 
-The project includes a comprehensive test script:
+### Common Issues
+1. **Database Connection**: Check NEON_API_KEY and URL
+2. **Authentication**: Verify SECRET_KEY is set
+3. **Rate Limiting**: Check if hitting request limits
+4. **CORS**: Ensure frontend domain is in cors_origins
 
-```bash
-python test_api.py
-```
+### Debugging
+- Check Render logs in dashboard
+- Use `/health/database` to test DB connection
+- Monitor `/health/` endpoint for service status
+- Review error logs for specific issues
 
-This will test:
-- Health endpoints
-- User registration and login
-- API key authentication
-- Plans listing
-- Chat endpoint (requires Grok API key)
+### Performance
+- Monitor response times via X-Process-Time header
+- Check worker process utilization
+- Review database query performance
+- Monitor memory usage
 
-## Deployment
+## 🎉 Production Ready!
 
-### Render.com
-1. Connect your GitHub repository
-2. Set environment variables in Render dashboard
-3. Deploy with automatic builds
-
-### Keep-Alive
-The `/health/` endpoint prevents Render free tier from sleeping.
-
-## Security Features
-
-- Password hashing with bcrypt
-- JWT token authentication
-- API key validation
-- SQL injection protection with parameterized queries
-- CORS middleware configuration
-
-## License
-
-KnockXPrime AI Proprietary License
-- Source code is property of the owner
-- Unauthorized commercial use prohibited
-- Contact for licensing or collaboration
-
-## Support
-
-For issues or questions, please contact the development team.
+Your KnockXPrime AI backend is now configured for production deployment with:
+- ⚡ High-performance async API
+- 🔒 Enterprise-grade security
+- 📊 Comprehensive monitoring
+- 🚀 Auto-scaling capabilities
+- 💾 Reliable database integration
+- 🛡️ Rate limiting and protection
