@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - KnockXPrime AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" class="logo-svg">
+                    <circle cx="16" cy="16" r="14" fill="url(#logoGradient)" class="pulse-circle"/>
+                    <path d="M12 10h8v2h-8zm0 4h8v2h-8zm0 4h6v2h-6z" fill="white"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF6B35"/>
+                            <stop offset="100%" style="stop-color:#1E90FF"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>KnockXPrime AI</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="product.html" class="nav-link">Product</a>
+                <a href="features.html" class="nav-link active">Features</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="api.html" class="nav-link">API</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link cta-button">Get Started</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero features-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Powerful Features</span>
+                        <br>Built for Innovation
+                    </h1>
+                    <p class="hero-description">
+                        Discover the comprehensive suite of AI capabilities that make KnockXPrime AI 
+                        the perfect choice for developers, businesses, and innovators worldwide.
+                    </p>
+                </div>
+                <div class="hero-visual">
+                    <svg width="400" height="400" viewBox="0 0 400 400" class="features-animation">
+                        <!-- Feature Icons Orbiting -->
+                        <g class="feature-orbit">
+                            <!-- Chat Icon -->
+                            <g class="feature-icon-group">
+                                <circle cx="200" cy="100" r="25" fill="url(#featureGradient1)" opacity="0.9">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M190 95h20v10h-20z M185 100h5v5h-5z" fill="white"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 200 200;360 200 200" dur="20s" repeatCount="indefinite"/>
+                            </g>
+                            
+                            <!-- Code Icon -->
+                            <g class="feature-icon-group">
+                                <circle cx="300" cy="200" r="25" fill="url(#featureGradient2)" opacity="0.9">
+                                    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M290 195l5 5-5 5 M310 195l-5 5 5 5" stroke="white" stroke-width="2" fill="none"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 200 200;360 200 200" dur="20s" repeatCount="indefinite"/>
+                            </g>
+                            
+                            <!-- Shield Icon -->
+                            <g class="feature-icon-group">
+                                <circle cx="200" cy="300" r="25" fill="url(#featureGradient3)" opacity="0.9">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M200 285l-8 8v8l8 4 8-4v-8z" fill="white"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 200 200;360 200 200" dur="20s" repeatCount="indefinite"/>
+                            </g>
+                            
+                            <!-- Analytics Icon -->
+                            <g class="feature-icon-group">
+                                <circle cx="100" cy="200" r="25" fill="url(#featureGradient4)" opacity="0.9">
+                                    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="90" y="205" width="4" height="10" fill="white"/>
+                                <rect x="96" y="200" width="4" height="15" fill="white"/>
+                                <rect x="102" y="195" width="4" height="20" fill="white"/>
+                                <rect x="108" y="190" width="4" height="25" fill="white"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 200 200;360 200 200" dur="20s" repeatCount="indefinite"/>
+                            </g>
+                        </g>
+                        
+                        <!-- Central Hub -->
+                        <circle cx="200" cy="200" r="50" fill="url(#centralGradient)" class="central-hub">
+                            <animate attributeName="r" values="45;55;45" dur="4s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="200" y="205" text-anchor="middle" fill="white" font-size="16" font-weight="bold">AI</text>
+                        
+                        <!-- Connecting Lines -->
+                        <g stroke="url(#connectionGradient)" stroke-width="2" fill="none" opacity="0.6">
+                            <line x1="200" y1="150" x2="200" y2="125">
+                                <animate attributeName="stroke-dasharray" values="0,50;25,25;50,0" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="250" y1="200" x2="275" y2="200">
+                                <animate attributeName="stroke-dasharray" values="50,0;25,25;0,50" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="200" y1="250" x2="200" y2="275">
+                                <animate attributeName="stroke-dasharray" values="0,50;25,25;50,0" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="150" y1="200" x2="125" y2="200">
+                                <animate attributeName="stroke-dasharray" values="50,0;25,25;0,50" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                        </g>
+                        
+                        <defs>
+                            <linearGradient id="featureGradient1">
+                                <stop offset="0%" style="stop-color:#FF6B35"/>
+                                <stop offset="100%" style="stop-color:#FF8C42"/>
+                            </linearGradient>
+                            <linearGradient id="featureGradient2">
+                                <stop offset="0%" style="stop-color:#1E90FF"/>
+                                <stop offset="100%" style="stop-color:#4169E1"/>
+                            </linearGradient>
+                            <linearGradient id="featureGradient3">
+                                <stop offset="0%" style="stop-color:#000000"/>
+                                <stop offset="100%" style="stop-color:#2C2C2C"/>
+                            </linearGradient>
+                            <linearGradient id="featureGradient4">
+                                <stop offset="0%" style="stop-color:#FF6B35"/>
+                                <stop offset="100%" style="stop-color:#1E90FF"/>
+                            </linearGradient>
+                            <linearGradient id="centralGradient">
+                                <stop offset="0%" style="stop-color:#FF6B35"/>
+                                <stop offset="50%" style="stop-color:#1E90FF"/>
+                                <stop offset="100%" style="stop-color:#000000"/>
+                            </linearGradient>
+                            <linearGradient id="connectionGradient">
+                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:0.8"/>
+                                <stop offset="100%" style="stop-color:#1E90FF;stop-opacity:0.8"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="core-features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Core AI Capabilities</h2>
+                <p class="section-description">
+                    Advanced artificial intelligence features designed to transform your applications
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <rect x="10" y="15" width="40" height="30" rx="5" fill="url(#chatGradient)" class="chat-bubble">
+                                <animate attributeName="y" values="15;12;15" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <circle cx="20" cy="25" r="2" fill="white"/>
+                            <circle cx="30" cy="25" r="2" fill="white"/>
+                            <circle cx="40" cy="25" r="2" fill="white"/>
+                            <path d="M25 35l5 5 5-5" fill="url(#chatGradient)"/>
+                            <defs>
+                                <linearGradient id="chatGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="100%" style="stop-color:#1E90FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Natural Language Processing</h3>
+                    <p class="feature-description">
+                        Advanced conversational AI that understands context, intent, and nuance 
+                        for human-like interactions.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Context-aware responses</li>
+                        <li>Multi-language support</li>
+                        <li>Sentiment analysis</li>
+                        <li>Intent recognition</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <rect x="10" y="10" width="40" height="40" rx="5" fill="none" stroke="url(#codeGradient)" stroke-width="2"/>
+                            <path d="M20 20l-5 5 5 5 M40 20l5 5-5 5" stroke="url(#codeGradient)" stroke-width="2" fill="none" class="code-brackets">
+                                <animate attributeName="stroke-width" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <line x1="25" y1="35" x2="35" y2="25" stroke="url(#codeGradient)" stroke-width="2"/>
+                            <defs>
+                                <linearGradient id="codeGradient">
+                                    <stop offset="0%" style="stop-color:#1E90FF"/>
+                                    <stop offset="100%" style="stop-color:#000000"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Code Generation & Analysis</h3>
+                    <p class="feature-description">
+                        Intelligent code generation, debugging assistance, and automated 
+                        code review capabilities.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Multi-language code generation</li>
+                        <li>Bug detection and fixes</li>
+                        <li>Code optimization</li>
+                        <li>Documentation generation</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <path d="M30 10l-15 20h10v20h10V30h10z" fill="url(#speedGradient)" class="speed-arrow">
+                                <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="1.5s" repeatCount="indefinite"/>
+                            </path>
+                            <circle cx="30" cy="30" r="25" fill="none" stroke="url(#speedGradient)" stroke-width="2" opacity="0.3"/>
+                            <defs>
+                                <linearGradient id="speedGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="100%" style="stop-color:#1E90FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast Performance</h3>
+                    <p class="feature-description">
+                        Sub-second response times with global edge computing and 
+                        optimized AI model inference.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Global CDN deployment</li>
+                        <li>Edge computing optimization</li>
+                        <li>Intelligent caching</li>
+                        <li>Load balancing</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <path d="M30 5l-20 15v25l20 10 20-10V20z" fill="url(#securityGradient)" class="security-shield">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M25 25l5 5 10-10" stroke="white" stroke-width="3" fill="none"/>
+                            <defs>
+                                <linearGradient id="securityGradient">
+                                    <stop offset="0%" style="stop-color:#000000"/>
+                                    <stop offset="100%" style="stop-color:#FF6B35"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">
+                        Bank-level security with end-to-end encryption, SOC 2 compliance, 
+                        and advanced threat protection.
+                    </p>
+                    <ul class="feature-list">
+                        <li>End-to-end encryption</li>
+                        <li>SOC 2 Type II certified</li>
+                        <li>GDPR compliant</li>
+                        <li>Advanced threat detection</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <rect x="10" y="35" width="8" height="15" fill="#FF6B35" class="bar-1">
+                                <animate attributeName="height" values="15;25;15" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="35;25;35" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="22" y="25" width="8" height="25" fill="#1E90FF" class="bar-2">
+                                <animate attributeName="height" values="25;35;25" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="25;15;25" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="34" y="20" width="8" height="30" fill="#000000" class="bar-3">
+                                <animate attributeName="height" values="30;40;30" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="20;10;20" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="46" y="15" width="8" height="35" fill="url(#analyticsGradient)" class="bar-4">
+                                <animate attributeName="height" values="35;45;35" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="15;5;15" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <defs>
+                                <linearGradient id="analyticsGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="100%" style="stop-color:#1E90FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Advanced Analytics</h3>
+                    <p class="feature-description">
+                        Comprehensive usage analytics, performance monitoring, and 
+                        business intelligence dashboards.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Real-time monitoring</li>
+                        <li>Custom dashboards</li>
+                        <li>Usage predictions</li>
+                        <li>Performance insights</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <circle cx="30" cy="30" r="20" fill="none" stroke="url(#customGradient)" stroke-width="3"/>
+                            <circle cx="30" cy="15" r="3" fill="#FF6B35" class="custom-dot">
+                                <animateTransform attributeName="transform" type="rotate" values="0 30 30;360 30 30" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="45" cy="30" r="3" fill="#1E90FF" class="custom-dot">
+                                <animateTransform attributeName="transform" type="rotate" values="0 30 30;360 30 30" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="30" cy="45" r="3" fill="#000000" class="custom-dot">
+                                <animateTransform attributeName="transform" type="rotate" values="0 30 30;360 30 30" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="15" cy="30" r="3" fill="url(#customGradient)" class="custom-dot">
+                                <animateTransform attributeName="transform" type="rotate" values="0 30 30;360 30 30" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="30" cy="30" r="5" fill="url(#customGradient)"/>
+                            <defs>
+                                <linearGradient id="customGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="50%" style="stop-color:#1E90FF"/>
+                                    <stop offset="100%" style="stop-color:#000000"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Customizable AI Models</h3>
+                    <p class="feature-description">
+                        Fine-tune AI models for your specific use case with custom training 
+                        and parameter optimization.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Custom model training</li>
+                        <li>Parameter fine-tuning</li>
+                        <li>Domain-specific optimization</li>
+                        <li>A/B testing capabilities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Features -->
+    <section class="integration-features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Seamless Integration</h2>
+                <p class="section-description">
+                    Connect with your existing tools and workflows effortlessly
+                </p>
+            </div>
+            
+            <div class="integration-grid">
+                <div class="integration-item">
+                    <div class="integration-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <rect x="5" y="5" width="30" height="30" rx="5" fill="url(#apiGradient)" class="api-box">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <text x="20" y="25" text-anchor="middle" fill="white" font-size="10" font-weight="bold">API</text>
+                            <defs>
+                                <linearGradient id="apiGradient">
+                                    <stop offset="0%" style="stop-color:#1E90FF"/>
+                                    <stop offset="100%" style="stop-color:#000000"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h4>RESTful API</h4>
+                    <p>Simple HTTP endpoints for easy integration</p>
+                </div>
+                
+                <div class="integration-item">
+                    <div class="integration-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="15" fill="url(#sdkGradient)" class="sdk-circle">
+                                <animate attributeName="r" values="13;17;13" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="20" y="25" text-anchor="middle" fill="white" font-size="8" font-weight="bold">SDK</text>
+                            <defs>
+                                <linearGradient id="sdkGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="100%" style="stop-color:#1E90FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h4>Multi-language SDKs</h4>
+                    <p>Python, JavaScript, Java, and more</p>
+                </div>
+                
+                <div class="integration-item">
+                    <div class="integration-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M20 5l-10 10h7v15h6V15h7z" fill="url(#webhookGradient)" class="webhook-arrow">
+                                <animateTransform attributeName="transform" type="translateY" values="0;-3;0" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <defs>
+                                <linearGradient id="webhookGradient">
+                                    <stop offset="0%" style="stop-color:#000000"/>
+                                    <stop offset="100%" style="stop-color:#FF6B35"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h4>Webhooks</h4>
+                    <p>Real-time event notifications</p>
+                </div>
+                
+                <div class="integration-item">
+                    <div class="integration-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <rect x="10" y="10" width="20" height="20" rx="3" fill="none" stroke="url(#pluginGradient)" stroke-width="2"/>
+                            <circle cx="20" cy="20" r="5" fill="url(#pluginGradient)" class="plugin-center">
+                                <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <defs>
+                                <linearGradient id="pluginGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="50%" style="stop-color:#1E90FF"/>
+                                    <stop offset="100%" style="stop-color:#000000"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h4>Plugins</h4>
+                    <p>Pre-built integrations for popular platforms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Experience the Power of AI</h2>
+                <p class="cta-description">
+                    Start building with KnockXPrime AI today and transform your applications
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </button>
+                    <button class="btn btn-outline btn-large">
+                        <i class="fas fa-book"></i>
+                        View Documentation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="14" fill="url(#footerGradient)"/>
+                            <path d="M12 10h8v2h-8zm0 4h8v2h-8zm0 4h6v2h-6z" fill="white"/>
+                            <defs>
+                                <linearGradient id="footerGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="100%" style="stop-color:#1E90FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>KnockXPrime AI</span>
+                    </div>
+                    <p class="footer-description">
+                        Empowering the future with intelligent AI solutions.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="product.html">Product</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 KnockXPrime AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="common-script.js"></script>
+    
+    <style>
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-8);
+            margin-top: var(--spacing-12);
+        }
+        
+        .feature-card {
+            background: var(--white);
+            padding: var(--spacing-8);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border: 2px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-orange);
+        }
+        
+        .feature-icon {
+            margin-bottom: var(--spacing-4);
+        }
+        
+        .feature-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-3);
+            color: var(--primary-black);
+        }
+        
+        .feature-description {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-4);
+            line-height: 1.6;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: var(--spacing-1) 0;
+            color: var(--gray-600);
+            position: relative;
+            padding-left: var(--spacing-4);
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-orange);
+            font-weight: bold;
+        }
+        
+        .core-features {
+            padding: var(--spacing-24) 0;
+            background: var(--gray-50);
+        }
+        
+        .integration-features {
+            padding: var(--spacing-20) 0;
+        }
+        
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-6);
+            margin-top: var(--spacing-8);
+        }
+        
+        .integration-item {
+            text-align: center;
+            padding: var(--spacing-6);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+        
+        .integration-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .integration-icon {
+            margin-bottom: var(--spacing-3);
+        }
+        
+        .integration-item h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-2);
+            color: var(--primary-black);
+        }
+        
+        .integration-item p {
+            color: var(--gray-600);
+            font-size: var(--font-size-sm);
+        }
+    </style>
+</body>
+</html>

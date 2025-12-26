@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - KnockXPrime AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="common-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" class="logo-svg">
+                    <circle cx="16" cy="16" r="14" fill="url(#logoGradient)" class="pulse-circle"/>
+                    <path d="M12 10h8v2h-8zm0 4h8v2h-8zm0 4h6v2h-6z" fill="white"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF6B35"/>
+                            <stop offset="100%" style="stop-color:#1E90FF"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span>KnockXPrime AI</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="product.html" class="nav-link active">Product</a>
+                <a href="features.html" class="nav-link">Features</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="api.html" class="nav-link">API</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link cta-button">Get Started</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero product-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Intelligent AI Platform</span>
+                        <br>Built for the Future
+                    </h1>
+                    <p class="hero-description">
+                        Experience next-generation artificial intelligence with our comprehensive platform. 
+                        From natural language processing to advanced analytics, KnockXPrime AI delivers 
+                        enterprise-grade solutions that scale with your business.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Try Free
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <svg width="400" height="400" viewBox="0 0 400 400" class="product-animation">
+                        <!-- Central AI Core -->
+                        <circle cx="200" cy="200" r="40" fill="url(#coreGradient)" class="ai-core">
+                            <animate attributeName="r" values="35;45;35" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        
+                        <!-- Neural Network Nodes -->
+                        <g class="neural-nodes">
+                            <circle cx="120" cy="120" r="8" fill="#FF6B35" class="node">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="280" cy="120" r="8" fill="#1E90FF" class="node">
+                                <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="120" cy="280" r="8" fill="#FF6B35" class="node">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="280" cy="280" r="8" fill="#1E90FF" class="node">
+                                <animate attributeName="opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                        </g>
+                        
+                        <!-- Connecting Lines -->
+                        <g class="connections" stroke="url(#lineGradient)" stroke-width="2" fill="none">
+                            <line x1="120" y1="120" x2="200" y2="200" class="connection-line">
+                                <animate attributeName="stroke-dasharray" values="0,300;150,150;300,0" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="280" y1="120" x2="200" y2="200" class="connection-line">
+                                <animate attributeName="stroke-dasharray" values="300,0;150,150;0,300" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="120" y1="280" x2="200" y2="200" class="connection-line">
+                                <animate attributeName="stroke-dasharray" values="0,300;150,150;300,0" dur="3.5s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="280" y1="280" x2="200" y2="200" class="connection-line">
+                                <animate attributeName="stroke-dasharray" values="300,0;150,150;0,300" dur="3.5s" repeatCount="indefinite"/>
+                            </line>
+                        </g>
+                        
+                        <!-- Orbiting Elements -->
+                        <g class="orbiting-elements">
+                            <circle cx="200" cy="200" r="80" fill="none" stroke="#FF6B35" stroke-width="1" opacity="0.3"/>
+                            <circle cx="200" cy="200" r="120" fill="none" stroke="#1E90FF" stroke-width="1" opacity="0.3"/>
+                            
+                            <circle r="6" fill="#FF6B35">
+                                <animateMotion dur="8s" repeatCount="indefinite">
+                                    <path d="M 200,120 A 80,80 0 1,1 199,120"/>
+                                </animateMotion>
+                            </circle>
+                            
+                            <circle r="6" fill="#1E90FF">
+                                <animateMotion dur="12s" repeatCount="indefinite">
+                                    <path d="M 200,80 A 120,120 0 1,0 199,80"/>
+                                </animateMotion>
+                            </circle>
+                        </g>
+                        
+                        <defs>
+                            <linearGradient id="coreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B35"/>
+                                <stop offset="100%" style="stop-color:#1E90FF"/>
+                            </linearGradient>
+                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:0.8"/>
+                                <stop offset="100%" style="stop-color:#1E90FF;stop-opacity:0.8"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Overview -->
+    <section class="product-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Complete AI Solution</h2>
+                <p class="section-description">
+                    Everything you need to integrate advanced AI capabilities into your applications
+                </p>
+            </div>
+            
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <rect x="10" y="10" width="40" height="40" rx="8" fill="url(#cardGradient1)" class="floating-rect">
+                                <animateTransform attributeName="transform" type="rotate" values="0 30 30;360 30 30" dur="20s" repeatCount="indefinite"/>
+                            </rect>
+                            <circle cx="30" cy="30" r="12" fill="white"/>
+                            <path d="M25 30l5 5 10-10" stroke="#FF6B35" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="cardGradient1">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="100%" style="stop-color:#1E90FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Natural Language Processing</h3>
+                    <p>Advanced text understanding and generation with context-aware responses</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <polygon points="30,5 55,50 5,50" fill="url(#cardGradient2)" class="floating-triangle">
+                                <animateTransform attributeName="transform" type="rotate" values="0 30 30;-360 30 30" dur="15s" repeatCount="indefinite"/>
+                            </polygon>
+                            <circle cx="30" cy="35" r="8" fill="white"/>
+                            <defs>
+                                <linearGradient id="cardGradient2">
+                                    <stop offset="0%" style="stop-color:#1E90FF"/>
+                                    <stop offset="100%" style="stop-color:#FF6B35"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Machine Learning Models</h3>
+                    <p>Pre-trained models optimized for various use cases and industries</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <circle cx="30" cy="30" r="25" fill="url(#cardGradient3)" class="floating-circle">
+                                <animate attributeName="r" values="20;30;20" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <rect x="20" y="20" width="20" height="20" fill="white" rx="2"/>
+                            <defs>
+                                <linearGradient id="cardGradient3">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="50%" style="stop-color:#1E90FF"/>
+                                    <stop offset="100%" style="stop-color:#000000"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Monitor performance and usage with comprehensive analytics dashboard</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="tech-specs">
+        <div class="container">
+            <div class="specs-content">
+                <div class="specs-text">
+                    <h2 class="section-title">Technical Excellence</h2>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="#FF6B35"/>
+                                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <div class="spec-content">
+                                <h4>99.9% Uptime SLA</h4>
+                                <p>Enterprise-grade reliability with global infrastructure</p>
+                            </div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="#1E90FF"/>
+                                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <div class="spec-content">
+                                <h4>Sub-second Response</h4>
+                                <p>Optimized for speed with edge computing</p>
+                            </div>
+                        </div>
+                        
+                        <div class="spec-item">
+                            <div class="spec-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" fill="#000000"/>
+                                    <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <div class="spec-content">
+                                <h4>Enterprise Security</h4>
+                                <p>SOC 2 compliant with end-to-end encryption</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="specs-visual">
+                    <svg width="300" height="300" viewBox="0 0 300 300" class="specs-diagram">
+                        <!-- Performance Chart -->
+                        <g class="performance-chart">
+                            <rect x="50" y="50" width="200" height="150" fill="none" stroke="#ccc" stroke-width="1"/>
+                            
+                            <!-- Animated bars -->
+                            <rect x="70" y="120" width="30" height="0" fill="#FF6B35">
+                                <animate attributeName="height" values="0;80;0" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="200;120;200" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="120" y="100" width="30" height="0" fill="#1E90FF">
+                                <animate attributeName="height" values="0;100;0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="200;100;200" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="170" y="80" width="30" height="0" fill="#000000">
+                                <animate attributeName="height" values="0;120;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="200;80;200" dur="3s" begin="1s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="220" y="60" width="30" height="0" fill="#FF6B35">
+                                <animate attributeName="height" values="0;140;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="200;60;200" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                            </rect>
+                        </g>
+                        
+                        <!-- Labels -->
+                        <text x="150" y="230" text-anchor="middle" fill="#666" font-size="12">Performance Metrics</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Business?</h2>
+                <p class="cta-description">
+                    Join thousands of companies using KnockXPrime AI to revolutionize their operations
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </button>
+                    <button class="btn btn-outline btn-large">
+                        <i class="fas fa-calendar"></i>
+                        Schedule Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="14" fill="url(#footerGradient)"/>
+                            <path d="M12 10h8v2h-8zm0 4h8v2h-8zm0 4h6v2h-6z" fill="white"/>
+                            <defs>
+                                <linearGradient id="footerGradient">
+                                    <stop offset="0%" style="stop-color:#FF6B35"/>
+                                    <stop offset="100%" style="stop-color:#1E90FF"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>KnockXPrime AI</span>
+                    </div>
+                    <p class="footer-description">
+                        Empowering the future with intelligent AI solutions.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="product.html">Product</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="help.html">Help Center</a></li>
+                        <li><a href="status.html">Status</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 KnockXPrime AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="common-script.js"></script>
+</body>
+</html>

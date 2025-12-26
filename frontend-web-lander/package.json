@@ -1,0 +1,45 @@
+{
+  "name": "knockxprime-ai-frontend",
+  "version": "1.0.0",
+  "description": "KnockXPrime AI Landing Page - Modern AI platform website with SVG animations",
+  "main": "index.html",
+  "scripts": {
+    "build": "npm run optimize && npm run minify",
+    "optimize": "node scripts/optimize.js",
+    "minify": "node scripts/minify.js",
+    "start": "node server.js",
+    "dev": "python -m http.server 8000",
+    "predeploy": "npm run build",
+    "deploy": "echo 'Deploying to Render...'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "ai",
+    "artificial-intelligence",
+    "landing-page",
+    "frontend",
+    "svg-animations",
+    "responsive-design"
+  ],
+  "author": "KnockXPrime AI",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "compression": "^1.7.4",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "html-minifier": "^4.0.0",
+    "clean-css": "^5.3.2",
+    "uglify-js": "^3.17.4"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knockxprime/ai-frontend.git"
+  },
+  "homepage": "https://knockxprime-ai.onrender.com"
+}

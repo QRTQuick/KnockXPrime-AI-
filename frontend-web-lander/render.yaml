@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: knockxprime-ai-frontend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health
+    autoDeploy: true
+    branch: main
+    rootDir: frontend-web-lander
+    
+    # Static file serving optimization
+    headers:
+      - path: "*.css"
+        name: "Cache-Control"
+        value: "public, max-age=31536000"
+      - path: "*.js"
+        name: "Cache-Control"
+        value: "public, max-age=31536000"
+      - path: "*.svg"
+        name: "Cache-Control"
+        value: "public, max-age=31536000"
+      - path: "*.html"
+        name: "Cache-Control"
+        value: "public, max-age=3600"
+        
+    # Custom domains (add your domain here)
+    # customDomains:
+    #   - name: knockxprime.ai
+    #   - name: www.knockxprime.ai
