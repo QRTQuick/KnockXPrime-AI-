@@ -30,14 +30,33 @@ class Settings(BaseSettings):
     # Render Configuration
     render_external_url: str = os.getenv("RENDER_EXTERNAL_URL", "http://localhost:8000")
     
-    # CORS Settings
-    cors_origins: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:8000",
-        "https://knockxprime-ai-frontend.onrender.com",
-        "https://knockxprime.ai",
-        "https://www.knockxprime.ai"
-    ]
+    # CORS Settings - Use property to handle environment variable parsing
+    @property
+    def cors_origins(self) -> List[str]:
+        """Get CORS origins from environment or use defaults"""
+        cors_env = os.getenv("CORS_ORIGINS")
+        if cors_env:
+            # Try to parse as JSON first, then fall back to comma-separated
+            try:
+                import json
+                return json.loads(cors_env)
+            except:
+                return [origin.strip() for origin in cors_env.split(",")]
+        
+        # Default origins
+        if self.environment == "production":
+            return [
+                "https://knockxprime-ai-frontend.onrender.com",
+                "https://knockxprime.ai",
+                "https://www.knockxprime.ai"
+            ]
+        else:
+            return [
+                "http://localhost:3000",
+                "http://localhost:8000",
+                "http://127.0.0.1:3000",
+                "http://127.0.0.1:8000"
+            ]
     
     # Rate Limiting
     rate_limit_requests: int = int(os.getenv("RATE_LIMIT_REQUESTS", 100))
