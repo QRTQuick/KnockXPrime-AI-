@@ -50,9 +50,10 @@ async def main():
         print("  • sessions (optional session storage)")
         
         print("\n💳 Default subscription plans:")
-        print("  • Leveler: $9.99/month - 10,000 tokens")
-        print("  • Log Min: $19.99/month - 25,000 tokens")
-        print("  • High Max: $49.99/month - 100,000 tokens")
+        print("  • Baby Free: $0/month - 1,000 tokens, 10 requests/day")
+        print("  • Leveler: $4/month - 5,000 tokens, 100 requests/day")
+        print("  • Log Min: $10/month - 20,000 tokens, 500 requests/day")
+        print("  • High Max: $100/month - 100,000 tokens, 2,000 requests/day")
         
         print("\n🎉 Setup complete! Your KnockXPrime AI database is ready.")
         print("\nNext steps:")

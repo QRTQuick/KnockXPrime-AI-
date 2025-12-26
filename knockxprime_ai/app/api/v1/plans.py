@@ -70,22 +70,25 @@ async def compare_plans():
     
     comparison = []
     for plan in plans:
-        tokens_per_dollar = plan['max_tokens'] / plan['price']
+        tokens_per_dollar = plan['max_tokens'] / plan['price'] if plan['price'] > 0 else float('inf')
         comparison.append({
             "name": plan['name'],
             "price": plan['price'],
             "max_tokens": plan['max_tokens'],
-            "tokens_per_dollar": round(tokens_per_dollar, 2),
+            "max_requests": plan['max_requests'],
+            "tokens_per_dollar": round(tokens_per_dollar, 2) if tokens_per_dollar != float('inf') else "Unlimited",
             "features": {
                 "api_access": True,
                 "usage_analytics": True,
-                "email_support": True,
-                "priority_support": plan['price'] >= 19.99
+                "email_support": plan['price'] > 0,
+                "priority_support": plan['price'] >= 10.00,
+                "daily_limits": True
             }
         })
     
     return {
         "plans": comparison,
         "currency": "USD",
-        "billing_cycle": "monthly"
+        "billing_cycle": "monthly",
+        "limits": "daily"
     }

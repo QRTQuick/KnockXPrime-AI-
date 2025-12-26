@@ -8,7 +8,7 @@ class UserRegister(BaseModel):
     username: str
     email: EmailStr
     password: str
-    plan_name: Optional[str] = "Leveler"
+    plan_name: Optional[str] = "Baby Free"
 
 
 class UserLogin(BaseModel):

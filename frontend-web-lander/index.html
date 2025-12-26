@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KnockXPrime AI - Your Premium AI Assistant</title>
+    <meta name="description" content="Experience the future of AI with KnockXPrime AI. Premium AI assistance with flexible pricing plans starting free.">
+    <meta name="keywords" content="AI, artificial intelligence, chatbot, premium AI, API, automation">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>KnockXPrime AI</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#api" class="nav-link">API</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#" class="nav-link cta-button">Get Started</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">KnockXPrime AI</span>
+                        <br>Your Premium AI Assistant
+                    </h1>
+                    <p class="hero-description">
+                        Experience the future of artificial intelligence with our cutting-edge AI platform. 
+                        From simple queries to complex automation, KnockXPrime AI delivers intelligent solutions 
+                        tailored to your needs.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToSection('pricing')">
+                            <i class="fas fa-rocket"></i>
+                            Start Free Today
+                        </button>
+                        <button class="btn btn-secondary" onclick="scrollToSection('features')">
+                            <i class="fas fa-play"></i>
+                            Learn More
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1M+</span>
+                            <span class="stat-label">API Calls</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">99.9%</span>
+                            <span class="stat-label">Uptime</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="ai-brain">
+                        <div class="brain-core">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="neural-network">
+                            <div class="node node-1"></div>
+                            <div class="node node-2"></div>
+                            <div class="node node-3"></div>
+                            <div class="node node-4"></div>
+                            <div class="node node-5"></div>
+                            <div class="node node-6"></div>
+                        </div>
+                        <div class="pulse-rings">
+                            <div class="pulse-ring ring-1"></div>
+                            <div class="pulse-ring ring-2"></div>
+                            <div class="pulse-ring ring-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="bg-gradient"></div>
+            <div class="floating-elements">
+                <div class="float-element element-1">💡</div>
+                <div class="float-element element-2">🚀</div>
+                <div class="float-element element-3">⚡</div>
+                <div class="float-element element-4">🎯</div>
+                <div class="float-element element-5">🔮</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful AI Features</h2>
+                <p class="section-description">
+                    Discover the capabilities that make KnockXPrime AI the perfect choice for your projects
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="feature-title">Intelligent Conversations</h3>
+                    <p class="feature-description">
+                        Engage in natural, context-aware conversations with our advanced language model
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="feature-title">Developer-Friendly API</h3>
+                    <p class="feature-description">
+                        Easy-to-integrate REST API with comprehensive documentation and SDKs
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Enterprise Security</h3>
+                    <p class="feature-description">
+                        Bank-level security with encrypted communications and secure API keys
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Usage Analytics</h3>
+                    <p class="feature-description">
+                        Detailed insights into your AI usage with real-time monitoring and reporting
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightning-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">
+                        Sub-second response times with global CDN and optimized infrastructure
+                    </p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">Customizable</h3>
+                    <p class="feature-description">
+                        Tailor the AI behavior to your specific needs with custom parameters
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Choose Your Plan</h2>
+                <p class="section-description">
+                    Flexible pricing options to suit every need, from hobbyists to enterprises
+                </p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Baby Free Plan -->
+                <div class="pricing-card free-plan" data-aos="fade-up" data-aos-delay="100">
+                    <div class="plan-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Baby Free</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span>
+                            <span class="amount">0</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>1,000 tokens/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>10 requests/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Basic API access</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Community support</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline">Get Started Free</button>
+                </div>
+
+                <!-- Leveler Plan -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Leveler</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span>
+                            <span class="amount">4</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>5,000 tokens/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>100 requests/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Full API access</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Email support</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Usage analytics</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Choose Leveler</button>
+                </div>
+
+                <!-- Log Min Plan -->
+                <div class="pricing-card recommended" data-aos="fade-up" data-aos-delay="300">
+                    <div class="plan-badge">Recommended</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Log Min</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span>
+                            <span class="amount">10</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>20,000 tokens/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>500 requests/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Priority API access</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Priority support</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Advanced analytics</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Custom parameters</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Choose Log Min</button>
+                </div>
+
+                <!-- High Max Plan -->
+                <div class="pricing-card enterprise" data-aos="fade-up" data-aos-delay="400">
+                    <div class="plan-badge">Enterprise</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">High Max</h3>
+                        <div class="plan-price">
+                            <span class="currency">$</span>
+                            <span class="amount">100</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>100,000 tokens/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>2,000 requests/day</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Dedicated API access</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>24/7 phone support</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Enterprise analytics</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Custom integrations</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>SLA guarantee</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Choose High Max</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Section -->
+    <section id="api" class="api-section">
+        <div class="container">
+            <div class="api-content">
+                <div class="api-text">
+                    <h2 class="section-title">Developer-First API</h2>
+                    <p class="section-description">
+                        Get started in minutes with our intuitive REST API. Comprehensive documentation, 
+                        code examples, and SDKs for popular programming languages.
+                    </p>
+                    <div class="api-features">
+                        <div class="api-feature">
+                            <i class="fas fa-bolt"></i>
+                            <span>Sub-second response times</span>
+                        </div>
+                        <div class="api-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure authentication</span>
+                        </div>
+                        <div class="api-feature">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Real-time usage monitoring</span>
+                        </div>
+                    </div>
+                    <div class="api-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-book"></i>
+                            View Documentation
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            Download SDK
+                        </button>
+                    </div>
+                </div>
+                <div class="api-code">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="code-title">API Example</span>
+                        </div>
+                        <div class="code-content">
+                            <pre><code class="language-javascript">// Initialize KnockXPrime AI
+const ai = new KnockXPrimeAI({
+  apiKey: 'your-api-key'
+});
+
+// Send a chat message
+const response = await ai.chat({
+  messages: [
+    { role: 'user', content: 'Hello AI!' }
+  ],
+  maxTokens: 100
+});
+
+console.log(response.choices[0].message.content);
+// Output: "Hello! How can I assist you today?"</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Get Started?</h2>
+                <p class="cta-description">
+                    Join thousands of developers and businesses using KnockXPrime AI to power their applications
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </button>
+                    <button class="btn btn-outline btn-large">
+                        <i class="fas fa-phone"></i>
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-brain"></i>
+                        <span>KnockXPrime AI</span>
+                    </div>
+                    <p class="footer-description">
+                        Empowering the future with intelligent AI solutions. 
+                        Built for developers, designed for everyone.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#api">API</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 KnockXPrime AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

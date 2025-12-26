@@ -13,11 +13,12 @@ A FastAPI-based AI chat service with subscription management, user authenticatio
 
 ## Subscription Plans
 
-| Plan | Price | Max Tokens/Month |
-|------|-------|------------------|
-| Leveler | $9.99 | 10,000 |
-| Log Min | $19.99 | 25,000 |
-| High Max | $49.99 | 100,000 |
+| Plan Name | Price | Max Tokens/Day | Max Requests/Day | Notes             |
+| --------- | ----- | -------------- | ---------------- | ----------------- |
+| Baby Free | $0    | 1,000          | 10/day           | Free limited plan |
+| Leveler   | $4    | 5,000          | 100/day          | Paid              |
+| Log Min   | $10   | 20,000         | 500/day          | Paid              |
+| High Max  | $100  | 100,000        | 2,000/day        | Paid              |
 
 ## Quick Start
 

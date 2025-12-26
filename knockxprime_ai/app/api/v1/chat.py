@@ -3,7 +3,7 @@ from app.core.auth import get_current_user
 from app.schemas.chat_schema import ChatRequest, ChatResponse, UsageInfo
 from app.services.grok_service import grok_service
 from app.services.billing_guard import billing_guard
-from app.services.usage_service import usage_service
+from app.core.daily_usage import daily_usage_service
 
 router = APIRouter()
 
@@ -16,7 +16,7 @@ async def chat_completion(
     """Handle chat completion requests with billing enforcement"""
     
     try:
-        # Validate request against user's plan limits
+        # Validate request against user's plan limits (daily)
         validation_result = await billing_guard.validate_request(current_user, request)
         
         # Make request to Grok API
@@ -30,12 +30,15 @@ async def chat_completion(
         await billing_guard.log_usage(current_user['id'], tokens_to_log)
         
         # Add usage info to response
-        usage_stats = await usage_service.get_usage_stats(current_user['id'])
+        daily_usage = await daily_usage_service.get_daily_usage(current_user['id'])
         grok_response['usage_info'] = {
-            "tokens_used_this_month": usage_stats.tokens_used,
-            "tokens_remaining": usage_stats.tokens_remaining,
-            "plan_name": usage_stats.plan_name,
-            "max_tokens": usage_stats.max_tokens
+            "tokens_used_today": daily_usage['tokens_used'],
+            "tokens_remaining_today": max(0, daily_usage['max_tokens'] - daily_usage['tokens_used']),
+            "requests_made_today": daily_usage['requests'],
+            "requests_remaining_today": max(0, daily_usage['max_requests'] - daily_usage['requests']),
+            "plan_name": daily_usage['plan_name'],
+            "max_tokens_daily": daily_usage['max_tokens'],
+            "max_requests_daily": daily_usage['max_requests']
         }
         
         return grok_response
@@ -49,16 +52,22 @@ async def chat_completion(
         )
 
 
-@router.get("/usage", response_model=UsageInfo)
+@router.get("/usage")
 async def get_chat_usage(current_user: dict = Depends(get_current_user)):
     """Get current usage information"""
     
-    usage_stats = await usage_service.get_usage_stats(current_user['id'])
+    daily_usage = await daily_usage_service.get_daily_usage(current_user['id'])
+    if not daily_usage:
+        await daily_usage_service.create_daily_usage_record(current_user['id'])
+        daily_usage = await daily_usage_service.get_daily_usage(current_user['id'])
     
-    return UsageInfo(
-        tokens_used=usage_stats.tokens_used,
-        tokens_remaining=usage_stats.tokens_remaining,
-        requests_made=usage_stats.requests,
-        plan_name=usage_stats.plan_name,
-        max_tokens=usage_stats.max_tokens
-    )
+    return {
+        "tokens_used": daily_usage['tokens_used'],
+        "tokens_remaining": max(0, daily_usage['max_tokens'] - daily_usage['tokens_used']),
+        "requests_made": daily_usage['requests'],
+        "requests_remaining": max(0, daily_usage['max_requests'] - daily_usage['requests']),
+        "plan_name": daily_usage['plan_name'],
+        "max_tokens": daily_usage['max_tokens'],
+        "max_requests": daily_usage['max_requests'],
+        "period": "daily"
+    }

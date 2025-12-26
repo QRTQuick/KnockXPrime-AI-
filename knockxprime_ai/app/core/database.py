@@ -72,6 +72,7 @@ async def create_tables():
             name TEXT NOT NULL UNIQUE,
             price NUMERIC(10,2) NOT NULL,
             max_tokens INTEGER NOT NULL,
+            max_requests INTEGER NOT NULL DEFAULT 100,
             created_at TIMESTAMP DEFAULT NOW()
         )
     """)
@@ -98,9 +99,11 @@ async def create_tables():
             tokens_used INTEGER DEFAULT 0,
             requests INTEGER DEFAULT 0,
             month DATE NOT NULL,
+            day DATE NOT NULL DEFAULT CURRENT_DATE,
             created_at TIMESTAMP DEFAULT NOW(),
             updated_at TIMESTAMP DEFAULT NOW(),
-            UNIQUE(user_id, month)
+            UNIQUE(user_id, month),
+            UNIQUE(user_id, day)
         )
     """)
     
@@ -121,17 +124,18 @@ async def create_tables():
 async def insert_default_plans():
     """Insert default subscription plans"""
     plans = [
-        ("Leveler", 9.99, 10000),
-        ("Log Min", 19.99, 25000),
-        ("High Max", 49.99, 100000)
+        ("Baby Free", 0.00, 1000, 10),
+        ("Leveler", 4.00, 5000, 100),
+        ("Log Min", 10.00, 20000, 500),
+        ("High Max", 100.00, 100000, 2000)
     ]
     
-    for name, price, max_tokens in plans:
+    for name, price, max_tokens, max_requests in plans:
         existing = await db.fetchrow(
             "SELECT id FROM plans WHERE name = $1", name
         )
         if not existing:
             await db.execute(
-                "INSERT INTO plans (name, price, max_tokens) VALUES ($1, $2, $3)",
-                name, price, max_tokens
+                "INSERT INTO plans (name, price, max_tokens, max_requests) VALUES ($1, $2, $3, $4)",
+                name, price, max_tokens, max_requests
             )
