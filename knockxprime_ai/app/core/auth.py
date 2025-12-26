@@ -1,5 +1,4 @@
 import secrets
-from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from typing import Optional
 from fastapi import HTTPException, status, Depends
@@ -9,21 +8,34 @@ from jose import JWTError, jwt
 from app.core.config import settings
 from app.core.database import db
 
+# Try passlib first, fallback to bcrypt
+try:
+    from passlib.context import CryptContext
+    pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+    
+    def hash_password(password: str) -> str:
+        """Hash a password using passlib"""
+        return pwd_context.hash(password)
+    
+    def verify_password(password: str, hashed_password: str) -> bool:
+        """Verify a password against its hash using passlib"""
+        return pwd_context.verify(password, hashed_password)
+        
+except ImportError:
+    # Fallback to direct bcrypt
+    import bcrypt
+    
+    def hash_password(password: str) -> str:
+        """Hash a password using bcrypt"""
+        salt = bcrypt.gensalt()
+        return bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+    
+    def verify_password(password: str, hashed_password: str) -> bool:
+        """Verify a password against its hash using bcrypt"""
+        return bcrypt.checkpw(password.encode('utf-8'), hashed_password.encode('utf-8'))
+
 
 security = HTTPBearer()
-
-# Password hashing context
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-
-def hash_password(password: str) -> str:
-    """Hash a password using bcrypt"""
-    return pwd_context.hash(password)
-
-
-def verify_password(password: str, hashed_password: str) -> bool:
-    """Verify a password against its hash"""
-    return pwd_context.verify(password, hashed_password)
 
 
 def generate_api_key() -> str:

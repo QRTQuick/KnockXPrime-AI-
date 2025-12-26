@@ -1,6 +1,6 @@
 import os
 from pydantic_settings import BaseSettings
-from typing import Optional
+from typing import Optional, List
 
 
 class Settings(BaseSettings):
@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     render_external_url: str = os.getenv("RENDER_EXTERNAL_URL", "http://localhost:8000")
     
     # CORS Settings
-    cors_origins: list = [
+    cors_origins: List[str] = [
         "http://localhost:3000",
         "http://localhost:8000",
         "https://knockxprime-ai-frontend.onrender.com",
