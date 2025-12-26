@@ -19,6 +19,8 @@ services:
         generateValue: true
       - key: ENVIRONMENT
         value: production
+      - key: RENDER_EXTERNAL_URL
+        sync: false
     healthCheckPath: /health/
     autoDeploy: true
     branch: main

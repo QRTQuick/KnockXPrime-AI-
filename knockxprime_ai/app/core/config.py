@@ -27,6 +27,9 @@ class Settings(BaseSettings):
     host: str = os.getenv("HOST", "0.0.0.0")
     port: int = int(os.getenv("PORT", 8000))
     
+    # Render Configuration
+    render_external_url: str = os.getenv("RENDER_EXTERNAL_URL", "http://localhost:8000")
+    
     # CORS Settings
     cors_origins: list = [
         "http://localhost:3000",

@@ -2,7 +2,9 @@ from fastapi import APIRouter
 from datetime import datetime
 import asyncio
 import httpx
+import os
 from app.core.neon_utils import test_neon_connection
+from app.core.config import settings
 
 router = APIRouter()
 
@@ -12,14 +14,20 @@ keep_alive_task = None
 
 async def keep_alive_ping():
     """Keep the service alive by pinging itself every 3 seconds"""
+    # Get the service URL from settings
+    service_url = settings.render_external_url
+    ping_url = f"{service_url}/health/ping"
+    
     while True:
         try:
             await asyncio.sleep(3)  # Wait 3 seconds
             async with httpx.AsyncClient() as client:
                 # Ping the health endpoint
-                await client.get("http://localhost:8000/health/ping", timeout=2.0)
-        except Exception:
-            # Ignore errors, just keep trying
+                response = await client.get(ping_url, timeout=5.0)
+                print(f"Keep-alive ping: {response.status_code} - {datetime.utcnow().isoformat()}")
+        except Exception as e:
+            # Log error but keep trying
+            print(f"Keep-alive ping failed: {e}")
             pass
 
 
